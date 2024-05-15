@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)./history -->
+<html lang="en" class=" ">
+  <head>
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <link rel="icon" href="./favicon.ico">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="manifest" href="./site.webmanifest">
+    <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="robots" content="index, follow">
+    <title>Пекарня Ваниль</title>
+    <meta name="description" content="Пекарня Ваниль - сайт для удобного и быстрого создания заказа!">
+    <link rel="canonical" href="./">
+    <meta name="head:count" content="2">
+    <meta name="yandex-verification" content="ef1f3c3e61f30b41" />
+     <link rel="stylesheet" href="./src/stylemain.css">
+  </head>
+  <body class="font-sans">
+    <div id="app" data-server-rendered="true" data-v-app="">
+      <div class="content">
+
+          <!--MODAL-->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color:#000000" id="exampleModalLongTitle">✅Ваша заявка</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-text">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" style="color:#000000" data-dismiss="modal">Закрыть</button>
+        <button type="button" id = "confButton" style="color:#000000" class="btn btn-primary" onclick="makeOrder('currency')">Подтвердить</button>
+          <script>
+        function makeOrder(inputId) {
+            var answer3 = document.getElementById('modal-text');
+            let fulltext = answer3.innerText;
+            let splittedText = fulltext.split('\n');
+            let name = splittedText[1].split(': ');
+            let phone = splittedText[2].split(': ');
+            let coffy = splittedText[5].split(': ');
+            let buny = splittedText[6].split(': ');
+            let snacky = splittedText[7].split(': ');
+            $.ajax({
+                    url: './createorder.php', //указываешь свой сайт
+                    type: 'POST', //указываешь тип запроса GET или POST
+                    data: {text2: answer3.innerText, text3:name[1], text4:phone[1], text5:coffy[1], text6:buny[1], text7: snacky[1]},
+                    success: function (data) {}, //тут твой код в случае успешного выполнения PHP-скрипта (ответ сервера 200)
+                    error: function(handler, exception) {}, //тут код при неудачном выполнении PHP-скрипта с ошибкой на сервере (ответ сервера любой кроме 200)
+                });
+            answer3.innerHTML = "Ваш заказ принят! Для выполнения заявки, свяжитесь с администратором по указанным контактам и сообщите уникальный код <strong>" + code + "</strong> :<br><br><a href = 'https://t.me/irromord' target='_blank'>phoneam</a><br><br>Или ожидайте, когда с вами свяжется администратор, если вы указали актуальные контактные данные!";
+            document.getElementById('confButton').setAttribute('disabled', true);
+        document.getElementById('confButton').innerText = "Заказ Принят!";}
+    </script>
+        <script>
+function generateString(length) {
+  const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result = ' ';
+    const charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+}
+          </script>
+      </div>
+    </div>
+  </div>
+</div>
+          <!--MODAL-->
+
+        <!--MODAL2 Contacts-->
+          <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color:#000000" id="exampleModalLongTitle2">👑Контакты</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-text2">
+        <p>Администратор, техподдержка: <a href = 'https://t.me/irromord' target="_blank"> @irromord </a></p>
+        <p>Бот для заказов через phoneam: <a href = 'https://t.me/cakesvanilla_bot' target="_blank"> @cakesvainlla_bot </a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" style="color:#000000" data-dismiss="modal">Закрыть</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+          <!--MODAL2 Contacts-->
+
+
+        <div class="content__container">
+          <section class="content__left left-content">
+            <a href="./" class="logo" data-v-e51b9700="">
+              <img src="./src/logo1.png" alt="Пекарня Ваниль" class="img" data-v-e51b9700="">
+              <div class="name" data-v-e51b9700="">Пекарня "Ваниль"</div>
+            </a>
+            <div class="balance" data-v-71ec3092="">
+              <div class="trade-link" data-v-71ec3092="">
+                <div class="trade-link__title title-row" data-v-71ec3092="">Имя:</div>
+
+                <input type="text" id = "username" class="input trade-link__input" placeholder="Пожалуйста, представьтесь" data-v-72a490ab="" data-v-71ec3092="">
+                <div class="errors" data-v-71ec3092="">
+                  <div class="error" data-v-71ec3092=""></div>
+                </div>
+              </div>
+              <!---->
+                <div class="trade-link__title title-row" data-v-71ec3092="">Телефон для связи:</div>
+                <input type="text" id = "phone" class="input trade-link__input" placeholder="+79999999999" required data-v-72a490ab="" data-v-71ec3092="">
+                <div class="trade-link__title title-row" data-v-71ec3092="">Выбери кофе:</div>
+
+                              <div class="form_toggle">
+                  <div class="form_toggle-item item-1">
+                      <input id="fid-1" type="radio" name="coffee" value="Капучино" checked onclick="clearCost()">
+                      <label for="fid-1"><strong>Капучино</strong></label>
+                  </div>
+                  <div class="form_toggle-item item-3">
+                      <input id="fid-3" type="radio" name="coffee" value="Раф" onclick="clearCost()">
+                      <label for="fid-3"><strong>Раф</strong></label>
+                  </div>
+                                <div class="form_toggle-item item-4">
+                      <input id="fid-4" type="radio" name="coffee" value="Латте" onclick="clearCost()">
+                      <label for="fid-4"><strong>Латте</strong></label>
+                  </div>
+                  <div class="form_toggle-item item-2">
+                      <input id="fid-2" type="radio" name="coffee" value="Эспрессо" onclick="clearCost()">
+                      <label for="fid-2"><strong>Эспрессо</strong></label>
+                  </div>
+                                  <script>function clearCost() {
+                          document.getElementById('answer').innerText="";
+                      }</script>
+              </div>
+              <div class="trade-link__title title-row" data-v-71ec3092="">Выбери булочку:</div>
+              <div class="form_toggle2">
+                  <div class="form_toggle-item2 item-1">
+                      <input id="fid-5" type="radio" name="bun" value="Булочка с шоколадом" checked onclick="clearCost()">
+                      <label for="fid-5"><strong>С шоколадом</strong></label>
+                  </div>
+                  <div class="form_toggle-item2 item-3">
+                      <input id="fid-6" type="radio" name="bun" value="Булочка с маком" onclick="clearCost()">
+                      <label for="fid-6"><strong>Маковая</strong></label>
+                  </div>
+                                <div class="form_toggle-item2 item-4">
+                      <input id="fid-7" type="radio" name="bun" value="Булочка с корицей" onclick="clearCost()">
+                      <label for="fid-7"><strong>С корицей</strong></label>
+                  </div>
+                  <div class="form_toggle-item2 item-2">
+                      <input id="fid-8" type="radio" name="bun" value="Булочка с вишней" onclick="clearCost()">
+                      <label for="fid-8"><strong>С вишней</strong></label>
+                  </div>
+                                  <script>function clearCost() {
+                          document.getElementById('answer').innerText="";
+                      }</script>
+              </div>
+
+              <div class="trade-link__title title-row" data-v-71ec3092="">Выбери закуску:</div>
+              <div class="form_toggle3">
+                  <div class="form_toggle-item3 item-1">
+                      <input id="fid-9" type="radio" name="snack" value="Крокеты" checked onclick="clearCost()">
+                      <label for="fid-9"><strong>Крокеты</strong></label>
+                  </div>
+                  <div class="form_toggle-item3 item-3">
+                      <input id="fid-10" type="radio" name="snack" value="Гранд Фри" onclick="clearCost()">
+                      <label for="fid-10"><strong>Гранд Фри</strong></label>
+                  </div>
+                                <div class="form_toggle-item3 item-4">
+                      <input id="fid-11" type="radio" name="snack" value="Хашбраун" onclick="clearCost()">
+                      <label for="fid-11"><strong>Хашбраун</strong></label>
+                  </div>
+                  <div class="form_toggle-item3 item-2">
+                      <input id="fid-12" type="radio" name="snack" value="Снэк бокс" onclick="clearCost()">
+                      <label for="fid-12"><strong>Снэк бокс</strong></label>
+                  </div>
+                                  <script>function clearCost() {
+                          document.getElementById('answer').innerText="";
+                      }</script>
+              </div>
+
+              <div class="amount-info relative" data-v-71ec3092=""> К оплате: 500 руб.<span class="flex items-center gap-x-8px" data-v-71ec3092=""><div id="answer"></div><script>
+        var answer = document.getElementById('answer');
+        var usd_variable = 94.36;
+        var kzt_variable = 0.209;
+        var uah_variable = 2.39;
+        function getInput(inputId) {
+          radio = document.querySelectorAll('input[name="radio"]');
+        for (const f of radio) {
+        if (f.checked) {
+          if (f.value === "USD") {
+            var element = document.getElementById(inputId);
+            if (element.value < 10) {
+            answer.innerText = 'Пополнение USD от 10 долларов!';
+              }
+            else if (element.value < 50) {
+            answer.innerText = Math.round(element.value * 1.015 * usd_variable) + " руб.";
+              }
+            else if (element.value > 1200) {
+            answer.innerText = 'Пополнение USD до 1200 долларов!';
+              }
+            else { answer.innerHTML = "<s>" + Math.round(element.value * 1.015 * usd_variable) + "</s> " + Math.round(element.value * 1 * usd_variable) + " руб.";}
+          } else if (f.value === "RUB"){
+            var element = document.getElementById(inputId);
+            if (element.value < 1000) {
+            answer.innerText = 'Пополнение RUB от 1000 рублей!';
+              }
+            else if (element.value > 100000) {
+            answer.innerText = 'Пополнение RUB до 100000 рублей!';
+              }
+            else if (element.value < 5000) {
+            answer.innerText = Math.round(element.value * 1.015) + " руб.";
+              } else { answer.innerHTML = "<s>" + Math.round(element.value * 1.015) + "</s> " + Math.round(element.value * 1) + " руб.";}
+          } else if (f.value === "KZT"){var element = document.getElementById(inputId);
+            if (element.value < 6000) {
+            answer.innerText = 'Пополнение KZT от 6000 тенге!';
+              }
+            else if (element.value > 500000) {
+            answer.innerText = 'Пополнение KZT до 500000 тенге!';
+              }
+            else if (element.value < 24000) {
+            answer.innerText = Math.round(element.value * 1.015 * kzt_variable) + " руб.";
+              } else { answer.innerHTML = "<s>" + Math.round(element.value * 1.015 * kzt_variable) + "</s> " + Math.round(element.value * 1 * kzt_variable) + " руб.";}
+        } else if (f.value === "UAH"){var element = document.getElementById(inputId);
+            if (element.value < 400) {
+            answer.innerText = 'Пополнение UAH от 400 гривен!';
+              }
+            else if (element.value > 40000) {
+            answer.innerText = 'Пополнение UAH до 40000 гривен!';
+              }
+            else if (element.value < 2000) {
+            answer.innerText = Math.round(element.value * 1.015 * uah_variable) + " руб.";
+              } else { answer.innerHTML = "<s>" + Math.round(element.value * 1.015 * uah_variable) + "</s> " + Math.round(element.value * 1 * uah_variable) + " руб.";}}
+
+        }}}
+    </script>
+
+
+                </span>
+              </div>
+
+              <button class="button button_bg balance-button" type="button" data-v-2e83a54c="" data-v-71ec3092="" onclick="getInputModal('currency')" data-toggle="modal" data-target="#exampleModalCenter">Создать заявку</button>
+                <script>
+        var answer2 = document.getElementById('modal-text');
+        function getInputModal(inputId) {
+          window.code = generateString(8);
+          var username = document.getElementById('username');
+            var phone = document.getElementById('phone');
+            if (username.value === "") {username.value = "Не указан";}
+             if (phone.value === "") {phone.value = "Не указан";}
+          radio = document.querySelectorAll('input[name="coffee"]');
+          radio2 = document.querySelectorAll('input[name="bun"]');
+          radio3 = document.querySelectorAll('input[name="snack"]');
+        for (const cof of radio) {
+            for (const snac of radio3) {
+        if (cof.checked) {
+          for (const bul of radio2) {
+            if (bul.checked) {
+              for (const snac of radio3) {
+            if (snac.checked) {
+          answer2.innerText = "Уникальный код заявки: " + code + "\nИмя: " + username.value + "\n Ваш телефон для связи с оператором: " + phone.value + "\n\nСоставлен комбо: \n" + "☕ Кофе: " + cof.value + "\n🥐 Булочка: "  +  bul.value + "\n🍟 Закуска: " + snac.value + "\n\n💳 К оплате: 500 руб.";
+        }}}}}}}
+        }
+    </script>
+            </div>
+            <div class="left-content__footer">
+              <div class="footer" data-v-387c6365="">
+                <a href="" class="" data-v-387c6365="" data-toggle="modal" data-target="#exampleModalCenter2" onclick="">Контакты</a>
+              </div>
+            </div>
+          </section>
+          <section class="content__right right-content">
+            <ul class="menu" data-v-64fe67a1="">
+              <li class="menu__item" data-v-64fe67a1="">
+                <a href="." class="menu-active router-link-exact-active menu__link" data-v-64fe67a1="" aria-current="page">Главная</a>
+                <!---->
+              </li>
+              <li class="menu__item" data-v-64fe67a1="">
+                <a href="./articles" class="menu__link" data-v-64fe67a1="">Статьи</a>
+              </li>
+              <li class="menu__item" data-v-64fe67a1="">
+                <a href="./admin" class="pouring"  data-v-64fe67a1="" style="color:rgb(249, 192, 42)">Вход</a>
+              </li>
+              <!--
+              <li class="menu__item" data-v-64fe67a1="">
+                <a href="./reviews" class="menu__link" data-v-64fe67a1="">Отзывы</a>
+              </li> -->
+            </ul>
+            <div class="history" data-v-3f9a45fc="">
+                <!---->
+                <div class="main-content" data-v-7ebb4d28="">
+                  <h1 data-v-7ebb4d28="">Оформить заказ - это просто!</h1>
+                  <div class="main-content__block block-main-content" data-v-7ebb4d28="">
+                    <h2 class="block-main-content__title" data-v-7ebb4d28="">Что для этого нужно?</h2>
+                    <ul class="list-action block-main-content__list" data-v-7ebb4d28="">
+                      <li class="list-action__item" data-v-7ebb4d28="">Укажите контактные данные</li>
+                      <li class="list-action__item" data-v-7ebb4d28="">Соберите своё комбо, выбрав любые 3 продукта</li>
+                      <li class="list-action__item" data-v-7ebb4d28="">Для вашего удобства цена любого комбо - всего 500 рублей!</li>
+                      <li class="list-action__item" data-v-7ebb4d28="">Нажмите кнопку "Создать заявку" и подтверди ее, если все указано верно</li>
+                      <li class="list-action__item" data-v-7ebb4d28="">Свяжитесь с администратором или ждите звонка</li>
+                      <li class="list-action__item" data-v-7ebb4d28="">Дождитесь доставки</li>
+                      <li class="list-action__item" data-v-7ebb4d28="">Наслаждайтесь своим комбо от пекарни "Ваниль"!</li>
+                    </ul>
+                  </div>
+
+
+            </div>
+            <div class="popup" data-v-3f9a45fc=""> Цена </div>
+            <div class="right-content__footer">
+              <div class="footer" data-v-387c6365="">
+                
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <!---->
+    </div>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(92321166, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/92321166" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+  </body>
+</html>
